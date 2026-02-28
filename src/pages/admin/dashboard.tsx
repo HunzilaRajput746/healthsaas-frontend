@@ -553,7 +553,7 @@ export default function AdminDashboard() {
           )}
 
 
-          {/* LABS TAB */
+          {/* LABS TAB */}
           {activeTab === 'labs' && (
             <motion.div key="labs" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
               <LabTestManager />
