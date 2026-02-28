@@ -97,11 +97,11 @@ export default function AdminDashboard() {
       // Add to appointments list (today's only)
       const today = new Date().toISOString().split('T')[0]
       if (appt.date === today) {
-        setAppointments(prev => [appt, ...prev])
+        setAppointments((prev: any[]) => [appt, ...prev])
       }
 
       // Update stats
-      setStats(prev => prev ? {
+      setStats((prev: any) => prev ? {
         ...prev,
         today: {
           ...prev.today,
@@ -139,14 +139,14 @@ export default function AdminDashboard() {
       ), { duration: 5000 })
 
       // Add to notification feed
-      setNotifications(prev => [appt, ...prev.slice(0, 19)])
+      setNotifications((prev: any[]) => [appt, ...prev.slice(0, 19)])
     }
   }, [lastEvent])
 
   const updateStatus = async (id: string, status: string) => {
     try {
       await adminAPI.updateAppointment(id, { status })
-      setAppointments(prev => prev.map(a =>
+      setAppointments((prev: any[]) => prev.map((a: any) =>
         a.appointment_id === id ? { ...a, status } : a
       ))
       toast.success(`Status updated to ${status}`)
@@ -552,6 +552,8 @@ export default function AdminDashboard() {
             </motion.div>
           )}
 
+
+          {/* LABS TAB */
           {activeTab === 'labs' && (
             <motion.div key="labs" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
               <LabTestManager />
