@@ -182,7 +182,7 @@ export default function AdminDashboard() {
     </motion.div>
   )
 
-  const navItems = [
+  const navItems: { id: Tab; label: string; icon: any }[] = [
     { id: 'dashboard', label: 'Dashboard', icon: LayoutDashboard },
     { id: 'appointments', label: "Today's", icon: Calendar },
     { id: 'calendar', label: 'Date Wise', icon: Activity },
